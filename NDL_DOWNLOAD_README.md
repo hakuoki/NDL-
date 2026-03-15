@@ -38,7 +38,7 @@ Start-Process "C:\Program Files\Google\Chrome\Application\chrome.exe" -ArgumentL
 ### 3. 登录网站
 
 1. 打开Chrome后，访问：https://dl.ndl.go.jp/ja/
-2. 使用您的账号登录（账号：E13817563）
+2. 使用您的账号登录
 3. 确保登录状态保持（自己登录也是可以的）
 
 ## 使用方法
