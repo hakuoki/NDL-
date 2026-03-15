@@ -1,0 +1,67 @@
+name: Build Executables
+
+on:
+  release:
+    types: [created]
+  push:
+    branches: [ "1.1" ]  # 监听 1.1 分支的推送
+  workflow_dispatch:
+
+permissions:
+  contents: write  # 必须开启写权限才能上传 Release
+
+jobs:
+  build:
+    name: Build for ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            artifact_name: ndl_downloader_windows.exe
+          - os: macos-latest
+            artifact_name: ndl_downloader_macos
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pyinstaller
+
+    - name: Build with PyInstaller
+      run: |
+        pyinstaller --onefile --clean --name "ndl_downloader" ndl_auto_downloader.py
+
+    # 重命名文件 (Windows)
+    - name: Rename Output (Windows)
+      if: matrix.os == 'windows-latest'
+      run: Move-Item dist/ndl_downloader.exe dist/${{ matrix.artifact_name }}
+
+    # 重命名文件 (Mac)
+    - name: Rename Output (Mac)
+      if: matrix.os == 'macos-latest'
+      run: mv dist/ndl_downloader dist/${{ matrix.artifact_name }}
+
+    # 1. 无论是 Push 还是 Release，都把文件上传到 Actions 页面供下载测试
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.artifact_name }}
+        path: dist/${{ matrix.artifact_name }}
+
+    # 2. 只有在打 Tag 发布 Release 时，才上传到 Release 页面
+    - name: Upload Release Asset
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: dist/${{ matrix.artifact_name }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
