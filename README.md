@@ -1,4 +1,4 @@
-# NDL Downloader v2.0 (高级版)
+# NDL Downloader v2.0 (高级版-挂机王)
 
 基于 DrissionPage 的日本国立国会图书馆（NDL）自动下载器。
 专为下载需登录才能浏览的书籍设计，支持自动分段、批量任务、断点续传。
@@ -10,11 +10,11 @@
 - **🔄 断点续传**：意外中断没关系，再次运行会自动跳过已下载的章节，继续未完成的任务。
 - **📑 批量下载**：支持导入 `urls.txt` 或直接拖拽文本文件，一次挂机下载多本书。
 - **💾 进度保存**：自动记录所有下载历史和进度到 `download_history.json`。
-- **⚡️ 无需配置**：已提供打包好的 EXE 版本，开箱即用。
+- **⚡️ 无需配置**：已提供打包好的 EXE 版本，开箱即用。MaccOS 用户请自行编译。
 
 ## 📂 文件说明
 
-- **NDLDownloader.exe** - 打包好的可执行程序（在 `dist` 目录下）。
+- **NDLDownloader.exe** - 打包好的可执行程序（在 `dist` 目录下,`NdlDownloaderPro.exe`）。
 - **ndl_auto_downloader.py** - 源代码脚本。
 - **urls.txt** - 批量下载列表模板文件。
 - **download_history.json** - 自动生成的进度记录（主要不要删除，用于断点续传）。
@@ -24,7 +24,7 @@
 
 ## 🚀 快速开始 (EXE版本)
 
-### 1. 准备 Chrome 浏览器
+### 1. 准备 Chrome 浏览器 
 
 本程序通过控制本地 Chrome 浏览器运行，请先启动 Chrome 并开启调试端口 (9222)。
 
@@ -52,7 +52,7 @@ Start-Process "C:\Program Files\Google\Chrome\Application\chrome.exe" -ArgumentL
 
 ---
 
-## 🐍 源码运行 (Python环境)
+## 源码运行 (Python环境)
 
 如果你想通过源码运行或修改：
 
@@ -72,8 +72,17 @@ python ndl_auto_downloader.py
 ## ⚠️ 常见问题
 
 - **合并失败 Permission denied？**
-  - v2.0 已修复此问题。下载时会先保存在文件夹中，合并成功后生成 PDF 并删除文件夹。
+  - v3.0 已修复此问题。下载时会先保存在文件夹中，合并成功后生成 PDF 并删除文件夹。
 - **如何开始批量下载？**
   - 编辑 `urls.txt`，每行放一个链接，然后运行程序。
 
 更多详细说明请查看 `NDL_DOWNLOAD_README.md`
+
+## 后续优化
+1. Edge 浏览器支持
+2. MacOS 兼容
+3. GUI
+
+## 说明
+- 本项目基于 [DrissionPage](https://github.com/DrissionPage/NDL_Downloader) 创建，部分功能为AI生成。
+- 本项目仅用于学习，请勿用于非法用途。
