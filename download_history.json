@@ -1,0 +1,49 @@
+{
+  "https://dl.ndl.go.jp/ja/pid/1112827": {
+    "title": "征旅 _ 松隈青壷句集",
+    "total_pages": 46,
+    "downloaded_parts": [
+      1
+    ],
+    "completed": true,
+    "last_updated": "2026-03-16 02:02:58.788149"
+  },
+  "https://dl.ndl.go.jp/ja/pid/1899568": {
+    "title": "宣撫挿話",
+    "total_pages": 13,
+    "downloaded_parts": [
+      1
+    ],
+    "completed": true,
+    "last_updated": "2026-03-16 02:03:07.901523"
+  },
+  "https://dl.ndl.go.jp/pid/12228422": {
+    "title": "武器なき戦士 _ ある宣撫班員の手記",
+    "total_pages": 132,
+    "downloaded_parts": [
+      1,
+      2
+    ],
+    "completed": true,
+    "last_updated": "2026-03-16 02:03:17.350585"
+  },
+  "https://dl.ndl.go.jp/pid/1899567": {
+    "title": "宣撫班とは如何なるものか",
+    "total_pages": 40,
+    "downloaded_parts": [
+      1
+    ],
+    "completed": true,
+    "last_updated": "2026-03-16 02:03:26.528608"
+  },
+  "https://dl.ndl.go.jp/pid/1134602": {
+    "title": "香港",
+    "total_pages": 149,
+    "downloaded_parts": [
+      1,
+      2
+    ],
+    "completed": true,
+    "last_updated": "2026-03-16 02:03:35.853483"
+  }
+}

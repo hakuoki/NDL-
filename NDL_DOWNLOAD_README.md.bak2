@@ -1,0 +1,71 @@
+# 日本国立国会图书馆自动下载器 使用说明
+
+## 功能特点 v2.0
+
+- ✅ **自动分段下载**：自动将书籍分段下载PDF（每次最多100页）
+- ✅ **批量下载**：支持从文本文件读取多个链接批量下载
+- ✅ **断点续传**：已下载的部分会自动跳过，意外中断后再次运行可继续下载
+- ✅ **进度保存**：自动记录下载进度到 `download_history.json`
+- ✅ **自动合并**：下载完成后自动合并分段PDF为一个完整文件
+
+## 使用前准备
+
+### 1. 安装依赖
+
+建议使用 conda 创建一个新环境：
+```bash
+conda create -n ndl python=3.9
+conda activate ndl
+pip install -r requirements.txt
+```
+
+### 2. 启动Chrome浏览器
+
+在使用脚本前，需要先启动Chrome浏览器并开启调试模式：
+
+**Windows CMD:**
+```batch
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222
+```
+
+**Windows PowerShell:**
+```powershell
+Start-Process "C:\Program Files\Google\Chrome\Application\chrome.exe" -ArgumentList "--remote-debugging-port=9222"
+```
+
+### 3. run
+
+1. 打开Chrome后，访问：https://dl.ndl.go.jp/ja/
+2. **确保您已经登录**
+3. 运行脚本：
+```bash
+python ndl_auto_downloader.py
+```
+
+## 使用模式
+
+### 1. 交互模式（推荐）
+直接运行 `python ndl_auto_downloader.py`，根据提示操作：
+- 输入单个链接 URL
+- 输入 `f` 选择一个包含链接的 txt 文件
+- 直接拖入 txt 文件到窗口
+
+### 2. 批量下载模式
+在脚本同目录下创建 `urls.txt`，每行放一个书籍链接。运行脚本时会自动询问是否读取。
+
+或者直接在命令行指定文件：
+```bash
+python ndl_auto_downloader.py my_list.txt
+```
+
+### 3. 断点续传
+如果下载过程中断（例如网络错误或关闭程序），直接重新运行脚本即可。
+脚本会自动读取 `download_history.json`，跳过已完成的部分，只下载剩下的部分。
+
+## 文件说明
+
+- `ndl_auto_downloader.py`: 主程序脚本
+- `download_history.json`: 自动生成的进度记录文件（请勿手动修改）
+- `downloads/`: 下载文件保存目录
+  - `书名.pdf`: 最终合并好的文件
+  - `书名.pdf/`: 临时文件夹，存放分段文件（合并成功后会自动删除）

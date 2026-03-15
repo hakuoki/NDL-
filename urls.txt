@@ -1,0 +1,10 @@
+# 将书籍链接放在这里，每行一个
+# 以 # 开头的行会被忽略
+# 例如：
+# https://dl.ndl.go.jp/pid/1234567
+#3.16
+https://dl.ndl.go.jp/ja/pid/1112827
+https://dl.ndl.go.jp/ja/pid/1899568
+https://dl.ndl.go.jp/pid/12228422
+https://dl.ndl.go.jp/pid/1899567
+https://dl.ndl.go.jp/pid/1134602
